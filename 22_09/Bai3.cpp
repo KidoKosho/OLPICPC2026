@@ -1,36 +1,25 @@
-#include<iostream>
-#include<cmath>
+#include <bits/stdc++.h>
 using namespace std;
-int main(){
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    int n;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    long long n;
     cin >> n;
-    long long tong = 0;
-    int a[n];
-    for(auto &x : a) {
-        cin >> x;
-        tong += x;
-    }
-    unsigned long sum1 =0,sum2=0;
-    for(int i=0;i<n;++i){
-        if(a[i] %2 ==0){
-            unsigned long long p =0;
-            int k =a[i];
-            while(k%2==0){
-                p++;
-                k/=2;
-            }
-            sum1 += p*(tong - a[i]);
-        }
-        if(a[i]%5==0){
-            unsigned long long p =0;
-            int k = a[i];
-            while(k%5==0){
-                p++;
-                k/=5;
-            }
-            sum2 += p*(tong - a[i]);
-        }
-    }
-    cout << min(sum1,sum2);
+    
+    long long a[n];
+    long long max_val = -2e9, ans = -2e9;
+
+    for(int i=0; i<n; i++)
+    {
+    	cin >> a[i];
+    	max_val = max(a[i], max_val + a[i]);
+		ans = max(ans, max_val);
+	}
+
+	cout << ans;
+    
+    return 0;
 }
